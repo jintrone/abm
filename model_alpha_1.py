@@ -7,7 +7,7 @@ class Post:
 		self.isb = random.random()
 		self.esb = random.random()
 		self.csb = random.random()
-		self.tot = self.isb + self.esb + self.csb\
+		self.tot = self.isb + self.esb + self.csb
 		self.show = 1
 	def delete(self):
 		self.show = 0
