@@ -11,11 +11,11 @@ class Post:
 		self.show = 1
 	def delete(self):
 		self.show = 0
-	def new(self, mu, sigma):
+	def new(self, mui, mue, muc, sigma):
 		self.time = int(time.time())
-		self.isb = random.gauss(mu, sigma)
-		self.esb = random.gauss(mu, sigma)
-		self.csb = random.gauss(mu, sigma)
+		self.isb = random.gauss(mui, sigma)
+		self.esb = random.gauss(mue, sigma)
+		self.csb = random.gauss(muc, sigma)
 		self.tot = self.isb + self.esb + self.csb
 		self.show = 1
 
