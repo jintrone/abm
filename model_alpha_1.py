@@ -11,12 +11,20 @@ class Post:
 		self.show = 1
 	def delete(self):
 		self.show = 0
+	def new(self, mu, sigma):
+		self.time = int(time.time())
+		self.isb = random.gauss(mu, sigma)
+		self.esb = random.gauss(mu, sigma)
+		self.csb = random.gauss(mu, sigma)
+		self.tot = self.isb + self.esb + self.csb
+		self.show = 1
 
 class Agent:
 	def __init__(self):
 		self.isn = random.uniform(0.5,1)
 		self.esn = random.uniform(0.3, 0.8)
 		self.csn = random.uniform(0, 0.5)
+		self.tot = self.isn + self.esn + self.csn
 		self.stay = 1
 		self.post = 0
 		self.totsp = 0
@@ -25,4 +33,4 @@ class Agent:
 	def post(self):
 		self.post = 1
 	def tally(self, recsp):
-		self.totsp += recsp}
+		self.totsp += recsp
