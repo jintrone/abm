@@ -31,16 +31,18 @@ class Agent:
 	def leave(self):
 		self.stay = 0
 	def addpost(self):
-		self.post = 1
+		self.post += 1
 	def tally(self, recsp):
 		self.totsp += recsp
+	def new(self)
+		self.totsp = 0
 		
 post = []		
 for i in range(0,50): post.append(Post())
 agent = []
 for i in range(0,5): agent.append(Agent())
 
-def agenteval(agent, npost):
+def agenteval(agent, npost, post):
 	for i in range(0, npost): agent.tally(post[i].tot)
 	lower = agent.tot * 50
 	upper = agent.tot * 50 + 2.5
@@ -51,5 +53,5 @@ def agenteval(agent, npost):
 	else:
 		agent.addpost()
 		newpost = Post()
-		post.append(newpost.new(agent.isn, agent.esn, agent.csn, 0.05))
-	return
+		newpost.new(agent.isn, agent.esn, agent.csn, 0.05)
+		return newpost
