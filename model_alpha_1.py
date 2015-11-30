@@ -34,7 +34,7 @@ class Agent:
 		self.post += 1
 	def tally(self, recsp):
 		self.totsp += recsp
-	def new(self)
+	def new(self):
 		self.totsp = 0
 		
 post = []		
