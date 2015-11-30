@@ -36,14 +36,20 @@ class Agent:
 		self.totsp += recsp
 		
 post = []		
-for i in range(0,10): post.append(Post())
-agent = Agent()
-for i in range(0,10): agent.tally(post[i].tot)
-if agent.totsp < 12.50: 
-	agent.leave()
-elif 12.50 <= agent.totsp < 17.50: 
-	pass
-else:
-	agent.addpost()
-	newpost = Post()
-	post.append(newpost.new(agent.isn, agent.esn, agent.csn, 0.05))
+for i in range(0,50): post.append(Post())
+agent = []
+for i in range(0,5): agent.append(Agent())
+
+def agenteval(agent, npost):
+	for i in range(0, npost): agent.tally(post[i].tot)
+	lower = agent.tot * 50
+	upper = agent.tot * 50 + 2.5
+	if agent.totsp < lower: 
+		agent.leave()
+	elif lower <= agent.totsp < upper: 
+		pass
+	else:
+		agent.addpost()
+		newpost = Post()
+		post.append(newpost.new(agent.isn, agent.esn, agent.csn, 0.05))
+	return
