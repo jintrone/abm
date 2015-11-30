@@ -44,6 +44,6 @@ if agent.totsp < 12.50:
 elif 12.50 <= agent.totsp < 17.50: 
 	pass
 else:
-	agent.post()
+	agent.addpost()
 	newpost = Post()
 	post.append(newpost.new(agent.isn, agent.esn, agent.csn, 0.05))
