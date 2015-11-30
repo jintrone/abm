@@ -55,3 +55,8 @@ def agenteval(agent, npost, post):
 		newpost = Post()
 		newpost.new(agent.isn, agent.esn, agent.csn, 0.05)
 		return post.append(newpost)
+
+for i in range(0,5): agenteval(agent[i], 50, post)
+
+agent1 = [x for x in agent if x.stay==1]
+post1 = post[2:]
