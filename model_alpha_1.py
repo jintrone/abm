@@ -44,8 +44,8 @@ for i in range(0,5): agent.append(Agent())
 
 def agenteval(agent, npost, post):
 	for i in range(0, npost): agent.tally(post[i].tot)
-	lower = agent.tot * 50
-	upper = agent.tot * 50 + 2.5
+	lower = agent.tot * npost
+	upper = agent.tot * npost + 2.5
 	if agent.totsp < lower: 
 		agent.leave()
 	elif lower <= agent.totsp < upper: 
