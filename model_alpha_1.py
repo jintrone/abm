@@ -54,4 +54,4 @@ def agenteval(agent, npost, post):
 		agent.addpost()
 		newpost = Post()
 		newpost.new(agent.isn, agent.esn, agent.csn, 0.05)
-		return newpost
+		return post.append(newpost)
