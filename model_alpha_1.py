@@ -37,10 +37,11 @@ class Agent:
 	def new(self):
 		self.totsp = 0
 		
-post = []		
-for i in range(0,50): post.append(Post())
+post = []
+nofpost = [500]
+for i in range(0,nofpost[0]): post.append(Post())
 agent = []
-for i in range(0,5): agent.append(Agent())
+for i in range(0,50): agent.append(Agent())
 
 def agenteval(agent, npost, post):
 	for i in range(0, npost): agent.tally(post[i].tot)
@@ -56,7 +57,12 @@ def agenteval(agent, npost, post):
 		newpost.new(agent.isn, agent.esn, agent.csn, 0.05)
 		return post.append(newpost)
 
-for i in range(0,5): agenteval(agent[i], 50, post)
+for i in range(0,len(agent)): agenteval(agent[i], nofpost[0], post)
 
+nofpost.append(len(post))
 agent1 = [x for x in agent if x.stay==1]
-post1 = post[2:]
+post1 = post[nofpost[1]-nofpost[0]:]
+
+for i in range(0,len(agent1)): 
+	agent1[i].new()
+	agenteval(agent1[i], nofpost[0], post1)
