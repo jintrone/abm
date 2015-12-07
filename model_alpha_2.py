@@ -34,3 +34,18 @@ class Agent:
 	def tally(self, recsp):
 		self.totsp += recsp
 	def new(self):
+
+class Agent:
+	def __init__(self):
+		self.ten = random.expovariate(lambd)
+		self.stage = 0
+		if self.ten > 1/lambd: self.stage = 1
+		self.know = random.random()
+		self.act = random.random()
+		self.inter = {}
+		
+class Post:
+	def __init__(self):
+		self.type = random.randint(0,1) #0 Question
+		self.iran = random.random()
+		self.auth = 'null'
