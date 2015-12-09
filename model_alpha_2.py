@@ -22,9 +22,32 @@ class Agent:
 class Post:
 	def __init__(self):
 		self.type = random.randint(0,1) #0 Question
-		self.iran = random.random()
+		self.info = random.randint(0,1)
+		self.iran = 0
+		if self.info = 1: self.iran = random.random()
 		self.auth = 'null'
 	def add(self, type, range, author):
 		self.type = type
 		self.iran = range
 		self.auth = author
+
+def postq(agent, ifit, cfit):
+	agent.act
+	agent.stage
+	ifit
+	cfit
+	newq = Post()
+	return newq.add(type, range, agent.id)
+
+def postir(agent, post):
+	agent.act
+	overlap = abs(agent.know - post.iran)
+	newr = Post()
+	return newr.add(type, range, agent.id)
+	
+def postcr(agent, post):
+	agent.act
+	if post.auth in agent.inter: times = agent.inter[post.auth]
+	newr = Post()
+	return newr.add(type, range, agent.id)
+	
