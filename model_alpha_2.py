@@ -1,13 +1,14 @@
 import time
 import random
 import uuid
+import math
 
 class Agent:
 	def __init__(self, lambd):
 		self.ten = random.expovariate(lambd)
 		self.stage = 0
 		self.ineed = random.random()
-		if self.ten > 1.0/lambd: 
+		if self.ten > math.log(10)/lambd: 
 			self.stage = 1
 			self.ineed = 0
 		self.know = random.random()
