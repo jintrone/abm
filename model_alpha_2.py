@@ -3,6 +3,11 @@ import random
 import uuid
 import math
 
+class Forum:
+	def __init__(self):
+		self.plist = []
+		self.alist = []
+
 class Agent:
 	def __init__(self, lambd):
 		self.ten = random.expovariate(lambd)
@@ -30,6 +35,7 @@ class Post:
 		self.iran = 0
 		if self.info = 1: self.iran = random.random()
 		self.auth = 'null'
+		self.time = 0
 	def add(self, type, range, author):
 		self.type = type
 		self.iran = range
