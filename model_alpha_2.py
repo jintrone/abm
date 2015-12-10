@@ -6,7 +6,10 @@ class Agent:
 	def __init__(self, lambd):
 		self.ten = random.expovariate(lambd)
 		self.stage = 0
-		if self.ten > 1.0/lambd: self.stage = 1
+		self.ineed = random.random()
+		if self.ten > 1.0/lambd: 
+			self.stage = 1
+			self.ineed = 0
 		self.know = random.random()
 		self.act = random.random()
 		self.inter = {}
