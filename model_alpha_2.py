@@ -4,9 +4,18 @@ import uuid
 import math
 
 class Forum:
-	def __init__(self):
+	def __init__(self, num):
 		self.plist = []
 		self.alist = []
+		for i in range(0, num):
+			a = Agent(100)
+			p = Post(0, a)
+			self.alist.append(a)
+			if a.stage = 0: 
+				p.addq(a)
+			else :
+				p.addc(a)
+			self.plist.append(p)
 
 class Agent:
 	def __init__(self, lambd):
@@ -21,6 +30,7 @@ class Agent:
 		self.inter = {}
 		self.id = uuid.uuid4().hex[:10]
 		self.stay = 1
+		self.capa = random.random()
 	def addinter(self, id):
 		self.inter[id] = 1
 	def updinter(self, id):
@@ -29,18 +39,24 @@ class Agent:
 		self.stay = 0		
 		
 class Post:
-	def __init__(self):
-		self.type = random.randint(0,1) #0 Question
-		self.info = random.randint(0,1)
+	def __init__(self, time, agent):
+		self.info = 0
 		self.iran = 0
-		if self.info = 1: self.iran = random.random()
-		self.auth = 'null'
-		self.time = 0
-	def add(self, type, range, author):
-		self.type = type
-		self.iran = range
-		self.auth = author
-
+		self.comm = 0
+		self.auth = agent.id
+		self.time = time
+	def addq(self, agent):
+		self.type = 'Q'
+		self.info = 1
+		self.iran = random.gauss(agent.ineed, 0.05)
+	def adda(self, agent):
+		self.type = 'A'
+		self.info = 1
+		self.iran = random.gauss(agent.ineed, 0.05)
+	def addc(self, agent):
+		self.type = 'C'
+		self.comm = 1
+	
 def postq(agent, ifit, cfit):
 	agent.act
 	agent.stage
