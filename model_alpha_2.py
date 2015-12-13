@@ -11,7 +11,7 @@ class Forum:
 			a = Agent(100)
 			p = Post(0, a)
 			self.alist.append(a)
-			if a.stage = 0: 
+			if a.stage == 0: 
 				p.addq(a)
 			else :
 				p.addc(a)
@@ -48,11 +48,11 @@ class Post:
 	def addq(self, agent):
 		self.type = 'Q'
 		self.info = 1
-		self.iran = random.gauss(agent.ineed, 0.05)
+		self.iran = random.gauss(agent.ineed, 0.0005)
 	def adda(self, agent):
 		self.type = 'A'
 		self.info = 1
-		self.iran = random.gauss(agent.ineed, 0.05)
+		self.iran = random.gauss(agent.ineed, 0.0005)
 	def addc(self, agent):
 		self.type = 'C'
 		self.comm = 1
