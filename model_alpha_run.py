@@ -70,8 +70,7 @@ def write():
 	with open('alist.csv', 'a') as fun:
 		w = csv.DictWriter(fun, lineterminator='\n',
 				   fieldnames = ['act','capa','fit','dfit','ften','id','ineed',
-											 'inter','know','ppost','stage',
-											 'stay','ten'])
+						'inter','know','ppost','stage','stay','ten'])
 		w.writeheader()
 		for i in outlist:
 			w.writerow(i)	
