@@ -14,27 +14,27 @@ def main(time = 2):
 	for i in apool: #len=20
 		if i.stage == 0:#info seeking
 			ppool = [x for x in f.plist if (x.info == 1 and x.auth != i.id and x.time >= i.ften)]
-			for j in range(0, len(ppool)):
+			for j in ppool:
 				prob = random.random()
 				if prob <= i.capa:
-					i.evalai(ppool[j], time)
-					if ppool[j].auth in i.inter:
-						i.updinter(ppool[j].auth)
+					i.evalai(j, time)
+					if j.auth in i.inter:
+						i.updinter(j.auth)
 					else:
-						i.addinter(ppool[j].auth)
+						i.addinter(j.auth)
 				else:
 					pass
 			i.evalqi(time)
 		else:
 			ppool = [x for x in f.plist if (x.info == 0 and x.auth != i.id and x.time >= i.ften)]
-			for j in range(0, len(ppool)):
+			for j in ppool:
 				prob = random.random()
 				if prob <= i.capa:
-					i.evalc(ppool[j], time)
-					if ppool[j].auth in i.inter:
-						i.updinter(ppool[j].auth)
+					i.evalc(j, time)
+					if j.auth in i.inter:
+						i.updinter(j.auth)
 					else:
-						i.addinter(ppool[j].auth)
+						i.addinter(j.auth)
 				else:
 					pass
 			i.evalqc(time)	
