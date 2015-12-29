@@ -1,19 +1,22 @@
-from model_alpha_2 import Forum, Agent, Post
+from model_alpha_3 import Forum, Agent, Post, Para
 import random
 import pprint
 import csv
+import pdb
 
-f = Forum(10)
-for i in f.alist: i.addten() #len=10
-f.gena(10)
+#pdb.set_trace()
 
-def main(time = 2):
+f = Forum(50)
+for i in f.alist: i.addten()
+f.gena(5)
+
+def intera(time = 2):
 	temlist = []
-	apool = [x for x in f.alist if x.stay == 1]
+	f.alist = [x for x in f.alist if x.stay == 1]
 	
-	for i in apool: #len=20
-		if i.stage == 0:#info seeking
-			ppool = [x for x in f.plist if (x.info == 1 and x.auth != i.id and x.time >= i.ften)]
+	for i in f.alist: 
+		if i.stage == 0:
+			ppool = [x for x in f.plist if (x.info == 1 and x.auth != i.id and x.time >= i.ften and x.type == 'QI')]
 			for j in ppool:
 				prob = random.random()
 				if prob <= i.capa:
@@ -47,11 +50,13 @@ def main(time = 2):
 		
 		for obj0 in i.ppost: 
 			temlist.append(obj0)
+			
+		i.ppost=[]
 	
 	for obj1 in temlist:
 		f.plist.append(obj1)
 
-def write():
+def writep():
 	outlist = []
 	for i in f.plist:
 		outlist.append(vars(i))
@@ -62,15 +67,25 @@ def write():
 		w.writeheader()
 		for i in outlist:
 			w.writerow(i)
-			
+
+def writea():		
 	outlist = []		
 	for i in f.alist:
-		outlist.append(vars(i))		
+		tem = dict((k, vars(i)[k]) for k in ('act','capa','fit','dfit','ften','id','ineed', 'npost',
+						 'inter','know','stage','stay','ten','k'))
+		outlist.append(tem)		
 		
 	with open('alist.csv', 'a') as fun:
 		w = csv.DictWriter(fun, lineterminator='\n',
-				   fieldnames = ['act','capa','fit','dfit','ften','id','ineed',
-						'inter','know','ppost','stage','stay','ten'])
+				   fieldnames = ['act','capa','fit','dfit','ften','id','ineed', 'npost',
+						 'inter','know','stage','stay','ten', 'k'])
 		w.writeheader()
 		for i in outlist:
-			w.writerow(i)	
+			w.writerow(i)
+
+def main(l):
+	for i in range(2, l):
+		intera(i)
+		writea()
+		f.gena(5)
+
